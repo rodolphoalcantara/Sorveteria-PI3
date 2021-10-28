@@ -19,11 +19,13 @@ public class ConnectionFactory {
         
         cpds = new ComboPooledDataSource();
         
-        cpds.setDriverClass("com.mysql.jdbc.Driver");
-        cpds.setJdbcUrl("jdbc:mysql://localhost/soveteriadb?useTimezone=true&serverTimezone=UTC");
+        //seta configurações da conexão com o mysql
+        cpds.setDriverClass("com.mysql.cj.jdbc.Driver");
+        cpds.setJdbcUrl("jdbc:mysql://localhost/soveteriadb?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC");
         cpds.setUser("root");
         cpds.setPassword("root");
         
+        //seta algumas configurações da pool
         cpds.setMinPoolSize(5);
         cpds.setAcquireIncrement(5);
         cpds.setMaxPoolSize(20);
@@ -40,6 +42,4 @@ public class ConnectionFactory {
     public Connection recuperaConexao() throws SQLException{
         return this.cpds.getConnection();
     }
-    
-    
 }
