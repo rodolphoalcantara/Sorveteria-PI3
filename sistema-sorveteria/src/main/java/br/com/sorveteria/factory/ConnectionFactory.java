@@ -18,6 +18,7 @@ public class ConnectionFactory {
     public ConnectionFactory() throws PropertyVetoException{
         
         cpds = new ComboPooledDataSource();
+        
         cpds.setDriverClass("com.mysql.jdbc.Driver");
         cpds.setJdbcUrl("jdbc:mysql://localhost/soveteriadb?useTimezone=true&serverTimezone=UTC");
         cpds.setUser("root");
