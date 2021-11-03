@@ -14,7 +14,7 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-brown">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand navbar-brand-custom" href="#">
                 <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
                 Sorveteria
             </a>
@@ -46,8 +46,8 @@
                     <div class="container d-flex justify-content-end" style="font-size: 24px">Faturamento</div>
                 </div>
                 <div class="container d-flex justify-content-between align-items-center relevant-card-footer">
-                    <div style="font-size: 24px;">Relatório de Vendas</div>
-                    <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
+                    <div style="font-size: 24px;">Relatórios</div>
+                    <a href="relatorioVenda"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
             <div class="relevant-card flex-column justify-content-between">
@@ -60,8 +60,6 @@
                     <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
-
-
         </section>
 
     </body>
