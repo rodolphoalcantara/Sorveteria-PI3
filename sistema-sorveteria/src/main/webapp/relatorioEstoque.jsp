@@ -34,7 +34,7 @@
         
         <div class="container-fluid">
             <div class="form-busca form-busca-off form-group">
-                <form action="relatorioEstoque" method="GET"> 
+                <form action="relatorioProdutos" method="GET"> 
                     <div class="row">
                         <label class="col-form-label col-sm-12 col-md-1">Cod.produto</label>
                         <div class="col-sm-12 col-md-11 ">
