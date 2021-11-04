@@ -64,14 +64,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="produto" items="${requestScope.produtos}">
+                    <c:forEach var="log" items="${requestScope.logs}">
                         <tr>
-                            <th scope="row">${produto.idProduto}</th>
-                            <td>${produto.nomeprod}</td>
-                            <td>${ "N/A" }</td>
-                            <td>${produto.qtdestoque}</td>
-                            <td>${produto.categoriaprod}</td>
-                            <td>${ "N/A" }</td> 
+                            <th scope="row">${log.id}</th>
+                            <td>${log.produto.nome}</td>
+                            <td>${ log.dataOperacao }</td>
+                            <td>${log.quantidadeMovimentada}</td>
+                            <td>${log.produto.tipo}</td>
+                            <td>${ log.funcionario.nome }</td> 
                         <tr>
                         </c:forEach>
                 </tbody>
