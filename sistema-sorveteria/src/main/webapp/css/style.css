@@ -80,28 +80,3 @@ nav ul li div a {
     color: var(--cream-custom);
 
 }
-.menu-lateral{
-    width: 250px;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    background-color: #DAB798;
-}
-.busca-section-estoque{
-    width: 100%;
-    height: 10%;
-
-    background-color: blue;
-}
-.table-section-estoque{
-    /*width: 100%;*/
-    height: 80%;
-
-    background-color: red;
-}
-.btns-section-estoque{
-    width: 100%;
-    height: 10%;
-
-    background-color: blue;
-}

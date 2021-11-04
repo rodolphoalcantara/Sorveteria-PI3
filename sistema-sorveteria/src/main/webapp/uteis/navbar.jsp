@@ -13,7 +13,7 @@
     <body>
         <nav class="navbar navbar-dark bg-brown">
             <a class="navbar-brand" href="#">
-                <img src="../assets/Logo.svg" width="65" height="65" class="d-inline-block align-center" alt="">
+                <img src="${pageContext.request.contextPath}/assets/Logo.svg" width="65" height="65" class="d-inline-block align-center" alt="">
                 Sorveteria
             </a>
             <ul class="navbar-nav">

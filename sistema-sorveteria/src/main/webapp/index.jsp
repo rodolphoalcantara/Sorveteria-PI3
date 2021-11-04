@@ -13,20 +13,10 @@
         <title>Sorveteria</title>
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-brown">
-            <a class="navbar-brand" href="#">
-                <img src="assets/Logo.svg" width="65" height="65" class="d-inline-block align-center" alt="">
-                Sorveteria
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <div class="container"><a class="nav-link active" href="#">Logout</a></div>
-                </li>
-            </ul>
-        </nav>
+        <c:import url="uteis/navbar.jsp" />
         <header class="welcome-header">
             <div>Bem vindo,</div>
-            <div>Naga Freitas</div> <!--Mudar-->
+            <div>Usuário</div> <!--Mudar-->
         </header>
         <section class="relevant-section d-flex justify-content-around align-items-center">
             <div class="relevant-card flex-column justify-content-between">
