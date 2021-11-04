@@ -21,7 +21,7 @@ public class ConnectionFactory {
         
         //seta configurações da conexão com o mysql
         cpds.setDriverClass("com.mysql.cj.jdbc.Driver");
-        cpds.setJdbcUrl("jdbc:mysql://localhost/soveteriadb?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC");
+        cpds.setJdbcUrl("jdbc:mysql://localhost/sorveteriadb?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC");
         cpds.setUser("root");
         cpds.setPassword("root");
         

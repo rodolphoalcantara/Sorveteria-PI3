@@ -13,20 +13,10 @@
         <title>Sorveteria</title>
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-brown">
-            <a class="navbar-brand navbar-brand-custom" href="#">
-                <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
-                Sorveteria
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <div class="container"><a class="nav-link active" href="#">Logout</a></div>
-                </li>
-            </ul>
-        </nav>
+        <c:import url="uteis/navbar.jsp" />
         <header class="welcome-header">
-            <h1>Bem vindo,</h1>
-            <h2>Naga Freitas</h2> <!--Mudar-->
+            <div>Bem vindo,</div>
+            <div>Usuário</div> <!--Mudar-->
         </header>
         <section class="relevant-section d-flex justify-content-around align-items-center">
             <div class="relevant-card flex-column justify-content-between">
@@ -39,7 +29,6 @@
                     <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
-
             <div class="relevant-card flex-column justify-content-between">
                 <div class="container relevant-card-content">
                     <div class="container d-flex justify-content-end" style="font-size: 48px">R$ 00.000,00</div>
@@ -61,6 +50,31 @@
                 </div>
             </div>
         </section>
-
+        <section class="options-section">
+            <div class="option-card d-flex justify-content-center align-items-center text-center">
+                <a class="flex-column" href="#">
+                    <img src="assets/Sacola.svg" width="80" height="80" class="align-self-end" alt="" />
+                    <div class="option-link">Realizar Vendas</div>
+                </a>
+            </div>
+            <div class="option-card d-flex justify-content-center align-items-center text-center">
+                <a class="flex-column" href="#">
+                    <img src="assets/Produto.svg" width="80" height="80" class="align-self-end" alt="" />
+                    <div class="option-link">Produtos</div>
+                </a>
+            </div>
+            <div class="option-card d-flex justify-content-center align-items-center text-center">
+                <a class="flex-column" href="#">
+                    <img src="assets/Funcionario.svg" width="80" height="80" class="align-self-end" alt="" />
+                    <div class="option-link">Funcionarios</div>
+                </a>
+            </div>
+            <div class="option-card d-flex justify-content-center align-items-center text-center">
+                <a class="flex-column" href="#">
+                    <img src="assets/Caixa.svg" width="80" height="80" class="align-self-end" alt="" />
+                    <div class="option-link">Estoque</div>
+                </a>
+            </div>
+        </section>
     </body>
 </html>
