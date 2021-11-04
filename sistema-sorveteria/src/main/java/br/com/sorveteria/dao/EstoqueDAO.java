@@ -7,7 +7,6 @@ package br.com.sorveteria.dao;
 import br.com.sorveteria.model.Funcionario;
 import br.com.sorveteria.model.LogEstoque;
 import br.com.sorveteria.model.Produto;
-import br.com.sorveteria.util.GerenciadorConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,14 +69,13 @@ public class EstoqueDAO {
         String sql =  "SELECT * FROM log_estoque L "
                     + "INNER JOIN funcionario F on F.id_fun like L.fk_id_fun "
                     + "INNER JOIN produto P on P.id_produto like L.fk_id_produto "
-                    + "order by L.data_op desc"
                 + "WHERE L.id_log = ?";
         
         try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
 
             pstm.setString(1, codigo);
-
-            ResultSet rs = pstm.executeQuery();
+            pstm.execute();
+            ResultSet rs = pstm.getResultSet();
 
             while (rs.next()) {
                 LogEstoque estoque = new LogEstoque(rs.getInt("L.id_log"), 

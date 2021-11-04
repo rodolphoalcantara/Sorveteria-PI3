@@ -28,7 +28,7 @@ import static br.com.sorveteria.util.Constantes.RELATORIO_ESTOQUE_JSP_URL;
  *
  * @author Naga
  */
-@WebServlet(value = "/relatorioProdutos", name = "RelatorioProdutoServlet")
+@WebServlet(value = "/relatorioEstoque", name = "RelatorioEstoqueServlet")
 public class RelatorioEstoqueServlet extends HttpServlet {
     private static final String LOGS_ATTRIBUTE = "logs";
     
