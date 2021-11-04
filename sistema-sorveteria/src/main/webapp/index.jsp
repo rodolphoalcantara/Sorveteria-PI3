@@ -35,8 +35,8 @@
                     <div class="container d-flex justify-content-end" style="font-size: 24px">Faturamento</div>
                 </div>
                 <div class="container d-flex justify-content-between align-items-center relevant-card-footer">
-                    <div style="font-size: 24px;">Relatório de Vendas</div>
-                    <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
+                    <div style="font-size: 24px;">Relatórios</div>
+                    <a href="relatorioVenda"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
             <div class="relevant-card flex-column justify-content-between">

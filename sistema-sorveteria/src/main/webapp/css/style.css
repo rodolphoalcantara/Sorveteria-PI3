@@ -9,12 +9,17 @@ body{
     width: 100%;
     height: 100%;
     font-family: 'Comfortaa', cursive !important;
-    background-color: var(--cream-custom);
+    background-color: var(--cream-custom) !important;
 }
 
 .navbar-brand{
     font-size: 24px !important;
+}
+
+.navbar-brand-custom{
+    font-size: 36px !important;
     font-weight: bold !important;
+    padding: 0px !important;
 }
 nav ul li div a {
     font-size:  18px;
@@ -73,6 +78,16 @@ nav ul li div a {
     height: 210px;
     border-radius: 15px;
 }
+.navbar-custom{
+    border-radius: 0px !important;
+}
+.container-centralizado{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .option-link{
     text-decoration: none;
