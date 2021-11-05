@@ -84,7 +84,7 @@ public class ClienteDAO {
         }
     }
 	
-	public static List<Cliente> buscarTodosClientes() throws ClassNotFoundException, SQLException {
+	public List<Cliente> buscarTodosClientes() throws ClassNotFoundException, SQLException {
         List<Cliente> clientes = new ArrayList<>();
         String query = "SELECT * FROM cliente";
         
@@ -122,7 +122,7 @@ public class ClienteDAO {
     }
     		
 	
-	public static boolean deletarCliente(int nome) throws ClassNotFoundException, SQLException {
+	public boolean deletarCliente(int nome) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "DELETE FROM cliente where nome=?";
         Connection con = GerenciadorConexao.getConnection();
@@ -137,7 +137,7 @@ public class ClienteDAO {
          return ok;
     }
 	
-	public static boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
+	public boolean atualizarCliente(Cliente cliente) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "UPDATE cliente SET CPF=?, nome=?, email=?, sexo=?, data_nasc=?, telefone=?, endereco=?, cidade=?, estado=?  where id_cli=?";
         Connection con = GerenciadorConexao.getConnection();
