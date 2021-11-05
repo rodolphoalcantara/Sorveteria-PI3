@@ -5,7 +5,7 @@
  */
 package br.com.sorveteria.servlet;
 
-import br.com.sorveteria.dao.VendaDao;
+//import br.com.sorveteria.dao.VendaDao;
 import br.com.sorveteria.model.Venda;
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Naga
- */
+
 @WebServlet(value="/relatorioVenda", name="RelatorioVendaServlet")
 public class RelatorioVendaServlet extends HttpServlet{
 
@@ -32,3 +32,4 @@ public class RelatorioVendaServlet extends HttpServlet{
         rd.forward(req, resp);
     }
 }
+*/

@@ -5,7 +5,7 @@
  */
 package br.com.sorveteria.servlet;
 
-import br.com.sorveteria.dao.ProdutoDao;
+//import br.com.sorveteria.dao.ProdutoDao;
 import br.com.sorveteria.model.Produto;
 import static br.com.sorveteria.util.Constantes.COD_PRODUTO;
 import static br.com.sorveteria.util.Constantes.RELATORIO_PRODUTO_JSP_URL;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Naga
- */
+ 
 @WebServlet(value = "/relatorioProdutos", name = "RelatorioProdutoServlet")
 public class RelatorioProdutoServlet extends HttpServlet {
     private static final String PRODUTOS_ATTRIBUTE = "produtos";
@@ -40,3 +40,4 @@ public class RelatorioProdutoServlet extends HttpServlet {
         rd.forward(req, resp);
     }
 }
+*/
