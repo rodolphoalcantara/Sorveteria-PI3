@@ -23,7 +23,7 @@ public class ConnectionFactory {
         cpds.setDriverClass("com.mysql.cj.jdbc.Driver");
         cpds.setJdbcUrl("jdbc:mysql://localhost/sorveteriadb?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC");
         cpds.setUser("root");
-        cpds.setPassword("root");
+        cpds.setPassword("");
         
         //seta algumas configurações da pool
         cpds.setMinPoolSize(5);

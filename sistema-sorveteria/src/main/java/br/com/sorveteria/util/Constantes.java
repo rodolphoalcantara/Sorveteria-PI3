@@ -7,5 +7,5 @@ package br.com.sorveteria.util;
 
 public class Constantes {
     public static final String COD_PRODUTO = "codProduto";
-    public static final String RELATORIO_PRODUTO_JSP_URL = "/relatorioEstoque.jsp";
+    public static final String RELATORIO_ESTOQUE_JSP_URL = "/relatorioEstoque.jsp";
 }
