@@ -1,70 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 :root {
-    --brown-custom: #5A493A; 
-    --pink-custom: #FFABC4;
-    --cream-custom: #FFFEF2;
+  --brown-custom: #5a493a;
+  --pink-custom: #ffabc4;
+  --cream-custom: #fffef2;
 }
 
-body{
-    font-family: 'Comfortaa', cursive !important;
-    background-color: var(--cream-custom) !important;
+body {
+  font-family: "Comfortaa", cursive !important;
+  background-color: var(--cream-custom) !important;
 }
 
-.navbar-brand-custom{
-    font-size: 36px !important;
-    font-weight: bold !important;
-    padding: 0px !important;
+.navbar-brand-custom {
+  font-size: 36px !important;
+  font-weight: bold !important;
+  padding: 0px !important;
 }
 nav ul li div a {
-    font-size:  24px;
+  font-size: 24px;
 }
 
-.bg-brown{
-    background-color: var(--brown-custom);
+.bg-brown {
+  background-color: var(--brown-custom);
 }
-.bg-cream{
-    background-color: var(--cream-custom);
-}
-
-.welcome-header{
-    margin: 60px 0 30px 40px;
+.bg-cream {
+  background-color: var(--cream-custom);
 }
 
-.relevant-section{
-    background-color: var(--pink-custom);
-    height: 300px;
-    width: 100%;
+.welcome-header {
+  margin: 60px 0 30px 40px;
 }
 
-.relevant-card{
-    background-color: var(--cream-custom);
-    border: 3px solid #5A493A ;
-    border-bottom: 60px solid var(--brown-custom);
-    border-radius: 23px;
-    width: 360px;
-    height: 200px;
+.relevant-section {
+  background-color: var(--pink-custom);
+  height: 300px;
+  width: 100%;
 }
 
-.relevant-card-content{
-    height: 140px;
-    color: var(--brown-custom);
-    font-size: 12px;
-}
-.relevant-card-footer{
-    height: 60px;
-    color: var(--cream-custom);
-    font-size: 12px;
+.relevant-card {
+  background-color: var(--cream-custom);
+  border: 3px solid #5a493a;
+  border-bottom: 60px solid var(--brown-custom);
+  border-radius: 23px;
+  width: 360px;
+  height: 200px;
 }
 
-.navbar-custom{
-    border-radius: 0px !important;
+.relevant-card-content {
+  height: 140px;
+  color: var(--brown-custom);
+  font-size: 12px;
 }
-.container-centralizado{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.relevant-card-footer {
+  height: 60px;
+  color: var(--cream-custom);
+  font-size: 12px;
 }
 
+.navbar-custom {
+  border-radius: 0px !important;
+}
+.container-centralizado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+#tabelaFornecedor {
+  margin-top: 30px;
+}
 
+#tabelaFornecedor th {
+  border: 1px solid #5a493a;
+  padding: 10px;
+  text-align: left;
+  background-color: #fffef2;
+}

@@ -57,7 +57,7 @@
                 </div>
                 <div class="container d-flex justify-content-between align-items-center relevant-card-footer">
                     <div style="font-size: 20px">Gerenciar Fornecedores</div>
-                    <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
+                    <a href="mainFornecedor"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
         </section>
