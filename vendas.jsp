@@ -116,11 +116,7 @@
             <div style="clear: both;"></div>
         </section><!--center-->
 
-        <footer>
-            <div>
-                Felipe Ferreira Henriques, Luciana Alves, Matheus Makoto e Rogerio Lucon. 
-            </div>
-        </footer>
+        
         <c:if test="${erroAlert != null}">
             <script>
                 var r = alert("${erroAlert}");
