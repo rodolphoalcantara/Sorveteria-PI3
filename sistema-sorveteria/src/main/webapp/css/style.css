@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 :root {
-    --brown-custom: #5A493A; 
-    --pink-custom: #FFABC4;
-    --cream-custom: #FFFEF2;
+  --brown-custom: #5a493a;
+  --pink-custom: #ffabc4;
+  --cream-custom: #fffef2;
 }
-
 body{
     width: 100%;
     height: 100%;
@@ -25,11 +24,11 @@ nav ul li div a {
     font-size:  18px;
 }
 
-.bg-brown{
-    background-color: var(--brown-custom);
+.bg-brown {
+  background-color: var(--brown-custom);
 }
-.bg-cream{
-    background-color: var(--cream-custom);
+.bg-cream {
+  background-color: var(--cream-custom);
 }
 
 .welcome-header{
@@ -37,11 +36,12 @@ nav ul li div a {
     font-size: 36px;
 }
 
-.relevant-section{
-    background-color: var(--pink-custom);
-    height: 300px;
-    width: 100%;
+.relevant-section {
+  background-color: var(--pink-custom);
+  height: 300px;
+  width: 100%;
 }
+
 
 .relevant-card{
     background-color: var(--cream-custom);
@@ -52,23 +52,24 @@ nav ul li div a {
     height: 200px;
 }
 
-.relevant-card-content{
-    height: 140px;
-    color: var(--brown-custom);
-    font-size: 12px;
+.relevant-card-content {
+  height: 140px;
+  color: var(--brown-custom);
+  font-size: 12px;
 }
-.relevant-card-footer{
-    height: 60px;
-    color: var(--cream-custom);
-    font-size: 12px;
+
+.relevant-card-footer {
+  height: 60px;
+  color: var(--cream-custom);
+  font-size: 12px;
 }
+
 .options-section{
     padding: 60px 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
 }
 
 .option-card{
@@ -78,20 +79,30 @@ nav ul li div a {
     height: 210px;
     border-radius: 15px;
 }
+
 .navbar-custom{
     border-radius: 0px !important;
 }
-.container-centralizado{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+
+.container-centralizado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
+#tabelaFornecedor {
+  margin-top: 30px;
+}
+
+#tabelaFornecedor th {
+  border: 1px solid #5a493a;
+  padding: 10px;
+  text-align: left;
+}
 
 .option-link{
     text-decoration: none;
     font-size: 24px;
     color: var(--cream-custom);
-
 }

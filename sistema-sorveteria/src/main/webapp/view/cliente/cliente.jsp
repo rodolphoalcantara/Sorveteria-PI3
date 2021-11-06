@@ -32,17 +32,20 @@
                    
                     <table  class="table">
                         <thead>
-                        <th scope="col" class="col-1">Cód. Cliente</th><th scope="col" class="col-4">Nome</th><th scope="col" class="col-2">CPF</th><th scope="col" class="col-4">Email</th><th scope="col" class="col-1">Data de Nasc.</th>
+                        <th scope="col" class="col-1">Cód. Cliente</th><th scope="col" class="col-2">Nome</th><th scope="col" class="col-2">CPF</th><th scope="col" class="col-4">Email</th><th scope="col" class="col-1">Data de Nasc.</th><th scope="col" class="col-1">cidade</th><th scope="col" class="col-1">sexo</th>
                         </thead>
                         <tbody>
-                            <c:forEach var="produto" items="${listaClientes}">
+                            <c:forEach var="cliente" items="${listaClientes}">
                                 <tr>
                                     <th scope="row">${cliente.id}</th>
                                     <td>${cliente.nome}</td>
                                     <td>${cliente.CPF}</td>
                                     <td>${cliente.email}</td>
                                     <td>${cliente.data_nasc}</td>
-                                    <td class="col-1"><button onclick="" class="btn bg-pink">Editar</button></td>
+                                    <td>${cliente.cidade}</td>
+                                    <td>${cliente.sexo}</td>
+                                    <td class="col-1"><button onclick="" class="btn btnPink">Editar</button></td>
+                                    <td class="col-1"><button onclick="" class="btn btnPink">Remover</button></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

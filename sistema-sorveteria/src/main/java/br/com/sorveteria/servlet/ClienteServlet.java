@@ -26,15 +26,15 @@ public class ClienteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Cliente> clientes = new ArrayList<>();
-//        
-//        try{
-//            ClienteDAO clienteDAO = new ClienteDAO(ConnectionFactory.getInstance().recuperaConexao());
-//            
-//            clientes = clienteDAO.buscarTodosClientes();
-//
-//        }catch(Exception ex){
-//            ex.printStackTrace();
-//        }
+        
+        try{
+            ClienteDAO clienteDAO = new ClienteDAO(ConnectionFactory.getInstance().recuperaConexao());
+            
+            clientes = clienteDAO.buscarTodosClientes();
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
         request.setAttribute("listaClientes", clientes);
         request.getRequestDispatcher(Constantes.TELA_CLIENTE).forward(request, response);

@@ -21,33 +21,16 @@ import br.com.sorveteria.util.Constantes;
 *
 * @author Pedro Henrique Souza Peçanha
 */
-@WebServlet(value="/telaProduto", name="ProdutoServlet")
-public class ProdutoServlet extends HttpServlet {
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet(value="/adicionaProduto", name="adicionaProdutoServlet")
+public class adicionaProdutoServlet extends HttpServlet {
 		
-		List<Produto> produtos = new ArrayList<>();
-        
-        try{
-            ProdutoDAO produtoDAO = new ProdutoDAO(ConnectionFactory.getInstance().recuperaConexao());
-            
-            produtos = produtoDAO.buscarTodosProdutos();
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        
-        request.setAttribute("listaProdutos", produtos);
-        request.getRequestDispatcher(Constantes.TELA_PRODUTO).forward(request, response);
-    }
 	
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ope = request.getParameter("ope");
          // Passo 1 - Recuperar os parametros
-        String nome = request.getParameter("nomeCliente");
+        String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         String tipo = request.getParameter("tipo");
         double valorUnitario = Double.parseDouble(request.getParameter("valor_unitario"));
@@ -72,5 +55,5 @@ public class ProdutoServlet extends HttpServlet {
            response.sendRedirect(request.getContextPath()+"/uteis/erro.jsp");
         }
     }
-	  
+	
 }

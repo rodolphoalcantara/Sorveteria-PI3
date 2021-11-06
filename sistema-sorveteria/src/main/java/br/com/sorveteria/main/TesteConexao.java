@@ -5,8 +5,10 @@
  */
 package br.com.sorveteria.main;
 
+
 import br.com.sorveteria.dao.ProdutoDAO;
 import br.com.sorveteria.factory.ConnectionFactory;
+
 import br.com.sorveteria.model.Produto;
 
 import java.beans.PropertyVetoException;
@@ -17,12 +19,10 @@ public class TesteConexao {
 
     public static void main(String[] a) throws ClassNotFoundException, SQLException, PropertyVetoException {
 
+
     	ProdutoDAO produtoDAO = new ProdutoDAO(ConnectionFactory.getInstance().recuperaConexao());
     	
         List<Produto> pegarTudo = produtoDAO.buscarTodosProdutos();
         
-        for(Produto p: pegarTudo){
-            System.out.println(p.toString());
         }
-    }
 }

@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/relatorioProdutos" class="btn btn-lg btn-block bg-brown text-white">Relatório produtos</a>
+                <a href="relatorioEstoque" class="btn btn-lg btn-block bg-brown text-white">Relatório Estoque</a>
 
             </div>
 

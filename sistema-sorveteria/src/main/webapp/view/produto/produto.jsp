@@ -41,9 +41,9 @@
                                     <td>${produto.nome}</td>
                                     <td>${produto.descricao}</td>
                                     <td>${produto.tipo}</td>
-                                    <td>${produto.tipo}</td>
-                                    <td>${produto.valor_unitario}</td>
-                                    <td class="col-1"><button onclick="" class="btn bg-pink">Editar</button></td>
+                                    <td>${produto.valorUnitario}</td>
+                                    <td class="col-1"><button onclick="" class="btn btnPink">Editar</button></td>
+                                    <td class="col-1"><button onclick="" class="btn btnPink">Remover</button></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
