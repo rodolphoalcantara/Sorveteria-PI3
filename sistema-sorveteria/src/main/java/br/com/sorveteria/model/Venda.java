@@ -1,21 +1,24 @@
 package br.com.sorveteria.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Venda {
+
     private int id;
     private Date dataVenda;
     private double valorTotal;
     private int fkIdCliente;
     private int fkIdFuncionario;
-    
-      public Venda(Date dataVenda, double valorTotal, int fkIdCliente, int fkIdFuncionario) {
+    private ArrayList<Produto> produtos;
+
+    public Venda(Date dataVenda, double valorTotal, int fkIdCliente, int fkIdFuncionario) {
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
         this.fkIdCliente = fkIdCliente;
         this.fkIdFuncionario = fkIdFuncionario;
     }
-    
+
     public Venda(int id, Date dataVenda, double valorTotal, int fkIdCliente, int fkIdFuncionario) {
         this.id = id;
         this.dataVenda = dataVenda;
@@ -24,10 +27,10 @@ public class Venda {
         this.fkIdFuncionario = fkIdFuncionario;
     }
 
-    public Venda(){
-        
+    public Venda() {
+
     }
-    
+
     public int getId() {
         return id;
     }
@@ -68,6 +71,14 @@ public class Venda {
         this.fkIdFuncionario = fkIdFuncionario;
     }
 
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(ArrayList<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     @Override
     public String toString() {
         return "Venda{" + "id=" + id + ", dataVenda=" + dataVenda + ", valorTotal=" + valorTotal + ", fkIdCliente=" + fkIdCliente + ", fkIdFuncionario=" + fkIdFuncionario + '}';
@@ -104,5 +115,9 @@ public class Venda {
             return false;
         }
         return true;
+    }
+
+    public Object setFkIdCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
