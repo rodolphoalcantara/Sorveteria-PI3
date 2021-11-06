@@ -20,6 +20,8 @@ public class ProdutoDAO {
     
     private Connection connection;
 
+    public ProdutoDAO() {}
+    
     public ProdutoDAO(Connection connection) {
         this.connection = connection;
     }
@@ -81,7 +83,7 @@ public class ProdutoDAO {
         }
     }
     
-    public static List<Produto> buscarTodosProdutos() throws ClassNotFoundException, SQLException {
+    public List<Produto> buscarTodosProdutos() throws ClassNotFoundException, SQLException {
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT * FROM produto";
         
@@ -110,7 +112,7 @@ public class ProdutoDAO {
         
     }
     
-    public static boolean deletarProduto(int id) throws ClassNotFoundException, SQLException {
+    public boolean deletarProduto(int id) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "DELETE FROM produto where id_produto=?";
         Connection con = GerenciadorConexao.getConnection();
@@ -125,7 +127,7 @@ public class ProdutoDAO {
          return ok;
     }
     
-    public static boolean atualizarCliente(Produto produto) throws ClassNotFoundException, SQLException {
+    public boolean atualizarProduto(Produto produto) throws ClassNotFoundException, SQLException {
         boolean ok = true;
         String query = "UPDATE produto SET nome=?,descricao=?, tipo=?, valor_unitario=?, estoque=?  where id_produto=?";
         Connection con = GerenciadorConexao.getConnection();

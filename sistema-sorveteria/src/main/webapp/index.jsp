@@ -26,7 +26,7 @@
                 </div>
                 <div class="container d-flex justify-content-between align-items-center relevant-card-footer">
                     <div style="font-size: 24px">Gerenciar Clientes</div>
-                    <a href="#"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
+                    <a href="telaCliente"><img src="assets/Seta.svg" width="30" height="30" alt="alt"/></a>
                 </div>
             </div>
             <div class="relevant-card flex-column justify-content-between">
@@ -58,7 +58,7 @@
                 </a>
             </div>
             <div class="option-card d-flex justify-content-center align-items-center text-center">
-                <a class="flex-column" href="#">
+                <a class="flex-column" href="telaProduto">
                     <img src="assets/Produto.svg" width="80" height="80" class="align-self-end" alt="" />
                     <div class="option-link">Produtos</div>
                 </a>
