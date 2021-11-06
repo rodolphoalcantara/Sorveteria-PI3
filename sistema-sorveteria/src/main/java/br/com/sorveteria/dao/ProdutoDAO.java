@@ -52,44 +52,43 @@ public class ProdutoDAO {
         }
 
     }
-    
-    public Produto buscarPorNome(String nome) {
-        try {
-            Produto produto = null;
 
-            String sql = "SELECT * FROM produto p WHERE p.nome like ?";
+    public List<Produto> filtrarPorNome(String nomeFiltro){
+        List<Produto> produtos = new ArrayList<>();
+        String sql = "SELECT * FROM produto p WHERE p.nome like ?";
 
-            try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
-                pstm.setString(1, nome);
-
-                pstm.execute();
-
-                try ( ResultSet rst = pstm.getGeneratedKeys()) {
-                    while (rst.next()) {
-                        produto = new Produto(
-                                rst.getInt("id_produto"),
-                                rst.getString("nome"),
-                                rst.getString("descricao"),
-                                rst.getString("tipo"),
-                                rst.getDouble("valor_unitario"),
-                                rst.getInt("estoque"));
-                    }
-                    return produto;
-                }
-
+         try ( PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, "%"+ nomeFiltro +"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Produto produto = new Produto();
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                double valorUnitario = rs.getDouble("valor_unitario");
+                int estoque = rs.getInt("estoque");
+                produto.setId(rs.getInt("id_produto"));
+                produto.setNome(nome);
+                produto.setDescricao(descricao);
+                produto.setTipo(tipo);
+                produto.setValorUnitario(valorUnitario);
+                produto.setEstoque(estoque);
+                produtos.add(produto);
             }
         } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return produtos;
+
     }
     
-    public List<Produto> buscarTodosProdutos() throws ClassNotFoundException, SQLException {
+
+    public List<Produto> buscarTodosProdutos(){
+
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT * FROM produto";
         
-        Connection con = GerenciadorConexao.getConnection();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
+        try(PreparedStatement ps = connection.prepareStatement(query)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
             	Produto produto = new Produto();
@@ -98,6 +97,7 @@ public class ProdutoDAO {
                 String tipo = rs.getString("tipo");
                 double valorUnitario = rs.getDouble("valor_unitario");
                 int estoque = rs.getInt("estoque");
+                produto.setId(rs.getInt("id_produto"));
                 produto.setNome(nome);
                 produto.setDescricao(descricao);
                 produto.setTipo(tipo);

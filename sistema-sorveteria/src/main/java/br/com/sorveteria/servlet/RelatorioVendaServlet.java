@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Naga
- */
+
 @WebServlet(value="/relatorioVenda", name="RelatorioVendaServlet")
 public class RelatorioVendaServlet extends HttpServlet{
 
@@ -34,3 +34,4 @@ public class RelatorioVendaServlet extends HttpServlet{
 //    }
 
 }
+*/

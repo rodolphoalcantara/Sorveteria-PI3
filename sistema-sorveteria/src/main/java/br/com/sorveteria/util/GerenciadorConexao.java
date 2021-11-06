@@ -17,7 +17,7 @@ public class GerenciadorConexao {
     public static String SERVER = "localhost";
     public static String DATABASE = "sorveteriadb";
     public static String LOGIN = "root";
-    public static String SENHA = ""; //senha da minha conexao com mysql. Favor alterar
+    public static String SENHA = "root"; //senha da minha conexao com mysql. Favor alterar
     public static String URL = "";
     public static Connection CONEXAO;
 

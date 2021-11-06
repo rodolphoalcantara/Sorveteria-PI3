@@ -30,6 +30,9 @@ nav ul li div a {
 .bg-cream {
   background-color: var(--cream-custom);
 }
+.bg-pink{
+    background-color: var(--pink-custom);
+}
 
 .welcome-header{
     margin: 40px 30px;

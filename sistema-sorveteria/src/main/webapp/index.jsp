@@ -16,7 +16,7 @@
         <c:import url="uteis/navbar.jsp" />
         <header class="welcome-header">
             <div>Bem vindo,</div>
-            <div>Usuário</div> <!--Mudar-->
+            <div>Usuario</div> <!--Mudar-->
         </header>
         <section class="relevant-section d-flex justify-content-around align-items-center">
             <div class="relevant-card flex-column justify-content-between">
@@ -70,7 +70,7 @@
                 </a>
             </div>
             <div class="option-card d-flex justify-content-center align-items-center text-center">
-                <a class="flex-column" href="#">
+                <a class="flex-column" href="estoque/listar?p=">
                     <img src="assets/Caixa.svg" width="80" height="80" class="align-self-end" alt="" />
                     <div class="option-link">Estoque</div>
                 </a>

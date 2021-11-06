@@ -2,6 +2,8 @@
 import br.com.sorveteria.dao.EstoqueDAO;
 import br.com.sorveteria.factory.ConnectionFactory;
 import br.com.sorveteria.model.LogEstoque;
+import br.com.sorveteria.model.Produto;
+import br.com.sorveteria.util.Constantes;
 import java.beans.PropertyVetoException;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,12 +22,8 @@ public class Main {
         
         EstoqueDAO estoqueDAO = new EstoqueDAO(ConnectionFactory.getInstance().recuperaConexao());
         
-        List<LogEstoque> logs = estoqueDAO.listarTodos();
+        Boolean res = estoqueDAO.movimentarEstoque(new Produto(1, "Sorvete", "Sorvete delicioso", "Picolé", 1.00, 100), 50, Constantes.SAIDA_OPERACAO, 1);
         
-        for (LogEstoque log : logs) {
-            System.out.println(log.toString());
-        }
-        
-        
+        System.out.println(res);
     }
 }
