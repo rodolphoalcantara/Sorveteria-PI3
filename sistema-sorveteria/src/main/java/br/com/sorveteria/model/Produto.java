@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Produto {
+
+    public static Iterable<Produto> getProdutos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	int id;
 	String nome;
@@ -25,4 +29,12 @@ public class Produto {
 		this.estoque = estoque;
 		this.tipo = tipo;
 	}
+
+    public int getQuantidade() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setValor(double valorUnitario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
