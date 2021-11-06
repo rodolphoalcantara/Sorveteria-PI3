@@ -24,12 +24,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(value="/relatorioVenda", name="RelatorioVendaServlet")
 public class RelatorioVendaServlet extends HttpServlet{
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Venda> vendas = VendaDao.pegarTudo();
-        req.setAttribute("vendas", vendas);
-        RequestDispatcher rd = req.getRequestDispatcher("/relatorioVenda.jsp");
-        rd.forward(req, resp);
-    }
+
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        List<Venda> vendas = VendaDao.pegarTudo();
+//        req.setAttribute("vendas", vendas);
+//        RequestDispatcher rd = req.getRequestDispatcher("/relatorioVenda.jsp");
+//        rd.forward(req, resp);
+//    }
+
 }
 */

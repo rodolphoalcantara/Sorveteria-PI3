@@ -1,0 +1,184 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/11/2021, 21:26:11
+    Author     : Paola
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-width: 700px;
+    background: #81a167;
+}
+
+button {
+    background: #82dee8;
+}
+
+input {
+    background: #fffbb0;
+}
+
+#imagem-topo{
+    background: #caecae;
+    text-indent: -9999px;
+}
+/* --- Header Menu Superior ---*/
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: #caecae;
+    min-width: 850px;
+}
+
+header ul {margin-top: 18px;
+    list-style: none;
+}
+
+header li {
+    display: inline-block;
+    margin: 0 10px;
+    color: black;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+header button{
+    margin-right: 20px;
+    width: 100px;
+    height: 25px;
+}
+
+.center{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+#espacador {
+    margin-top: 80px;
+}
+/* ----- Corpo ------  */
+
+section {
+    border: 2px solid black;
+    background: #e6e29e;
+}
+
+form, .carrinho, .botoes {
+    border: 1px solid black;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+form div{
+    margin: 10px 0px;
+}
+
+form input{
+    width: 60%;
+    margin-left: 10px;
+}
+
+.nome-aba, .titulo{
+    width: 100%;  
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.nome-aba{
+    margin: 25px 0;
+    font-size: 30px;
+}
+
+.botoes button {
+    height: 30px;
+    width: 100px;
+    margin: 0 10px;
+}
+/* --- Coluna da Esquerda --- */
+#duas-col #primeira{
+    width: 40%;
+    float: left;
+    margin: 0 0 10px 20px;
+    /* background: green; */
+}
+/* --- Coluna da Direira ---*/
+
+#segunda{
+    width: 50%;
+    float: right;
+    margin: 0 20px 10px 0px;
+    /* background: hotpink; */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+tr:hover.hover{
+    background: #82dee8;
+}
+
+.prod{
+    text-align: left;
+}
+.qtd{
+    text-align: center;
+}
+.preco{
+    text-align: right;
+}
+
+#segunda .botoes {
+    float: left;
+    width: 280px;
+}
+
+.valor-total{
+    float: right;
+    margin: 10px 0;
+}
+.valor-total div{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.valor-total input{
+    height: 30px;
+}
+.selecionado{
+  background: #104f56;
+}
+
+.msgErro{
+    color: red;
+}
+footer {
+    position:relative;
+    bottom:0;
+    width:100%;
+}
+footer div{
+    height: 50px;
+    text-align: center;
+    background: #82dee8;
+    padding-top: 20px;
+}
+
+

@@ -16,6 +16,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -120,6 +122,7 @@ public class EstoqueDAO {
 
                 if (linhasAfetadas > 0) {
 
+<<<<<<< HEAD
                     query = "INSERT INTO log_estoque(data_op, operacao, quantidade, fk_id_produto, fk_id_fun) VALUES (?,?,?,?,?)";
                     try ( PreparedStatement pst = connection.prepareStatement(query)) {
                         pst.setDate(1, new Date(Calendar.getInstance().getTimeInMillis()));
@@ -140,6 +143,42 @@ public class EstoqueDAO {
         }
     }
     
+=======
+    public List<LogEstoque> filtrar(String codigo) {
+        List<LogEstoque> logs = new ArrayList();
+        String sql =  "SELECT * FROM log_estoque L "
+                    + "INNER JOIN funcionario F on F.id_fun like L.fk_id_fun "
+                    + "INNER JOIN produto P on P.id_produto like L.fk_id_produto "
+                + "WHERE L.id_log = ?";
+        
+        try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
+
+            pstm.setString(1, codigo);
+            pstm.execute();
+            ResultSet rs = pstm.getResultSet();
+
+            while (rs.next()) {
+                LogEstoque estoque = new LogEstoque(rs.getInt("L.id_log"), 
+                                rs.getDate("L.data_op"), 
+                                rs.getString("L.operacao"), 
+                                rs.getInt("L.quantidade"), 
+                                new Produto(rs.getInt("P.id_produto"), 
+                                        rs.getString("P.nome"),
+                                        rs.getString("P.descricao"),
+                                        rs.getString("P.tipo"), 
+                                        rs.getDouble("P.valor_unitario"), 
+                                        rs.getInt("P.estoque")), 
+                                new Funcionario(rs.getInt("F.id_fun"), rs.getString("F.CPF"), rs.getString("F.nome")));
+                logs.add(estoque);
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return logs;
+    }
+
+>>>>>>> master
 }
 
 

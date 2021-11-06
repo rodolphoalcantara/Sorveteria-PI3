@@ -20,6 +20,8 @@ public class ProdutoDAO {
     
     private Connection connection;
 
+    public ProdutoDAO() {}
+    
     public ProdutoDAO(Connection connection) {
         this.connection = connection;
     }
@@ -80,7 +82,11 @@ public class ProdutoDAO {
 
     }
     
+<<<<<<< HEAD
     public List<Produto> buscarTodosProdutos(){
+=======
+    public List<Produto> buscarTodosProdutos() throws ClassNotFoundException, SQLException {
+>>>>>>> master
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT * FROM produto";
         

@@ -12,7 +12,11 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-brown">
+<<<<<<< HEAD
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">
+=======
+            <a class="navbar-brand" href="index.jsp">
+>>>>>>> master
                 <img src="${pageContext.request.contextPath}/assets/Logo.svg" width="65" height="65" class="d-inline-block align-center" alt="">
                 Sorveteria
             </a>
