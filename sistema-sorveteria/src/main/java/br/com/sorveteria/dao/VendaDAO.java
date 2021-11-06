@@ -8,6 +8,7 @@ package br.com.sorveteria.dao;
 import br.com.sorveteria.factory.ConnectionFactory;
 import br.com.sorveteria.model.Produto;
 import br.com.sorveteria.model.Venda;
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +33,7 @@ public class VendaDAO {
 
         ArrayList<Venda> vendas = null;
 
-        try (Connection con = ConnectionFactory.getConnection()) {
+        try (Connection con = ConnectionFactory.getInstance().recuperaConexao()) {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             stmt.close();
@@ -77,11 +78,11 @@ public class VendaDAO {
      * @throws DaoException
      */
  
-    public boolean create(Venda venda) throws DaoException {
+    public boolean create(Venda venda) throws DaoException, PropertyVetoException {
 //        Ajustar para a venda
         int vendaId;
         String sql = "INSERT INTO venda (venda_cli_id, venda_func, venda_val_total, venda_data_venda) VALUES (?,?,?,?)";
-        try (Connection conn = ConnectionFactory.getConnection()) {
+        try (Connection conn = ConnectionFactory.getInstance().recuperaConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, venda.getFkIdCliente());
@@ -116,9 +117,9 @@ public class VendaDAO {
     }
 
   
-    public boolean delete(int id) throws DaoException {
+    public boolean delete(int id) throws DaoException, PropertyVetoException {
         String sql = "DELETE itens.*, venda.* FROM itens, venda WHERE itens.it_venda = ? AND venda.venda_id = ?";
-        try (Connection conn = ConnectionFactory.getConnection()) {
+        try (Connection conn = ConnectionFactory.getInstance().recuperaConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, id);
@@ -142,10 +143,10 @@ public class VendaDAO {
     }
 
 
-    public boolean update(int id, Venda venda) throws DaoException {
+    public boolean update(int id, Venda venda) throws DaoException, PropertyVetoException {
         String sql = "UPDATE venda SET venda_func = ?, venda_val_total = ?, venda_cli_id = ? WHERE venda_id = ?";
 
-        try (Connection conn = ConnectionFactory.getConnection()) {
+        try (Connection conn = ConnectionFactory.getInstance().recuperaConexao()) {
             PreparedStatement stmt = conn.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
             conn.setAutoCommit(false);
@@ -190,7 +191,7 @@ public class VendaDAO {
 
         Venda vendas = null;
 
-        try (Connection con = ConnectionFactory.getConnection()) {
+        try (Connection con = ConnectionFactory.getInstance().recuperaConexao()) {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();

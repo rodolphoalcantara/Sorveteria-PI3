@@ -122,7 +122,6 @@ public class EstoqueDAO {
 
                 if (linhasAfetadas > 0) {
 
-<<<<<<< HEAD
                     query = "INSERT INTO log_estoque(data_op, operacao, quantidade, fk_id_produto, fk_id_fun) VALUES (?,?,?,?,?)";
                     try ( PreparedStatement pst = connection.prepareStatement(query)) {
                         pst.setDate(1, new Date(Calendar.getInstance().getTimeInMillis()));
@@ -143,7 +142,7 @@ public class EstoqueDAO {
         }
     }
     
-=======
+
     public List<LogEstoque> filtrar(String codigo) {
         List<LogEstoque> logs = new ArrayList();
         String sql =  "SELECT * FROM log_estoque L "
@@ -178,7 +177,6 @@ public class EstoqueDAO {
         return logs;
     }
 
->>>>>>> master
 }
 
 

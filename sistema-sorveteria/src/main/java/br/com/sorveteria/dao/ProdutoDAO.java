@@ -82,11 +82,9 @@ public class ProdutoDAO {
 
     }
     
-<<<<<<< HEAD
+
     public List<Produto> buscarTodosProdutos(){
-=======
-    public List<Produto> buscarTodosProdutos() throws ClassNotFoundException, SQLException {
->>>>>>> master
+
         List<Produto> produtos = new ArrayList<>();
         String query = "SELECT * FROM produto";
         
