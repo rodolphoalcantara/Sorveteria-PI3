@@ -70,7 +70,7 @@
                 </a>
             </div>
             <div class="option-card d-flex justify-content-center align-items-center text-center">
-                <a class="flex-column" href="estoque/listar">
+                <a class="flex-column" href="estoque/listar?p=">
                     <img src="assets/Caixa.svg" width="80" height="80" class="align-self-end" alt="" />
                     <div class="option-link">Estoque</div>
                 </a>
