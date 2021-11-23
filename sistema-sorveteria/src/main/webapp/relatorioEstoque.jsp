@@ -11,29 +11,10 @@
         <c:import url="uteis/header.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Relatorio estoque</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
-
     </head>
-    <body class="custom-body">    
-        <nav class="navbar navbar-dark bg-brown navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand navbar-brand-custom" href="index.jsp">
-                    <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
-                    Sorveteria
-                </a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div class=""><a class="nav-link active" href="#">Logout</a></div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
+    <body class="">    
+        <c:import url="uteis/navbar.jsp" />
         <div class="container-fluid">
             <div class="form-busca form-busca-off form-group">
                 <form action="relatorioEstoque" method="GET"> 

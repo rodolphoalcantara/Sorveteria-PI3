@@ -48,7 +48,7 @@ public class FornecedorServlet extends HttpServlet {
             throws IOException, ServletException {
         ArrayList<Fornecedor> lista = fDao.listarFornecedor();
         request.setAttribute("fornecedores", lista);
-        RequestDispatcher rd = request.getRequestDispatcher("fornecedor.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("view/fornecedor/fornecedor.jsp");
         rd.forward(request, response);
 
     }
@@ -86,7 +86,7 @@ public class FornecedorServlet extends HttpServlet {
         request.setAttribute("estado", fornecedor.getEstado());
         request.setAttribute("segmento", fornecedor.getSegmento());
 
-        RequestDispatcher rd = request.getRequestDispatcher("editarFornecedor.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("view/fornecedor/editarFornecedor.jsp");
         rd.forward(request, response);
 
     }

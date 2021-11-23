@@ -3,26 +3,14 @@
 <!DOCTYPE html>
 <html>
     <head lang="pt-br">
-        <c:import url="uteis/header.jsp"/>
+        <c:import url="${pageContext.request.contextPath}/uteis/header.jsp"/>
         <meta charset="utf-8">
         <title>Fornecedores</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-brown ">
-            <a class="navbar-brand" href="index.jsp">
-                <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
-                Sorveteria
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="http://pudim.com.br">Logout</a>
-                </li>
-            </ul>
-        </nav>
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp" />
         <h1>Cadastrar novo Fornecedor</h1>
-        <form name="formFornecedor" action="insertFornecedor" method="post">
+        <form name="formFornecedor" action="/insertFornecedor" method="post">
             <table class="input-group flex-nowrap" >
                 <tr>
                     <td><input type="text" name="cnpj" placeholder="CNPJ"></td>
@@ -49,8 +37,8 @@
                     <td><input type="text" name="segmento" placeholder="Segmento"></td>
                 </tr>
             </table>
-            <input type="button" value="Cadastrar" onclick="validar()">
+            <input type="button" value="Cadastrar" onclick="validarFornecedor()">
         </form>
-        <script src="scripts/validador.js"></script>
+        <script src="${pageContext.request.contextPath}/js/validador.js"></script>
     </body>
 </html>
