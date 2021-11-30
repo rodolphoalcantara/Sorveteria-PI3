@@ -15,3 +15,7 @@ function buscarProduto(){
         window.location.href = ("estoque/listar?p="+nomeProduto);
     }
 }
+
+$("#btnAddProduto").click(function(){
+    alert("ALOU");
+});

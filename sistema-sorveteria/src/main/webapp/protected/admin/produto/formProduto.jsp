@@ -6,16 +6,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <c:import url="${pageContext.request.contextPath}/uteis/header.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Produtos</title>
     </head>
-    <body class="container">
-        <c:import url="../uteis/header.jsp"/>
-        <h1>Formulário de Produtos</h1>
-        <form action="CadastroClienteServlet" method="POST">
-
+    <body>
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp"/>
+        <h1 class="welcome-header">Formulário de Produtos</h1>
+        <section class="container">
+        <form action="/adicionaProduto" method="POST">
             <div class="form-group">
-                <label>Id</label>
                 <input type="hidden" name="id_produto" value="${produto.id}"
                        required class="form-control"/><br/>
             </div>
@@ -44,12 +44,10 @@
                 <input type="text" name="estoqueProduto" value="${produto.estoque}"
                        required class="form-control"/><br/>
             </div>
-                     
             <br/>
-
-
             <br/>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn bg-pink btnOutlineBrown ml-0 w-100">Enviar</button>
         </form>
+        </section>>
     </body>
 </html>

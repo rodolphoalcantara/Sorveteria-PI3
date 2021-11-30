@@ -16,12 +16,14 @@ import br.com.sorveteria.dao.ProdutoDAO;
 import br.com.sorveteria.factory.ConnectionFactory;
 import br.com.sorveteria.model.Produto;
 import br.com.sorveteria.util.Constantes;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
 *
 * @author Pedro Henrique Souza Peçanha
 */
-@WebServlet(value="/telaProduto", name="ProdutoServlet")
+@WebServlet(urlPatterns = { "/telaProduto", "/insertProduto"}, name="ProdutoServlet")
 public class ProdutoServlet extends HttpServlet {
 	
 	@Override
@@ -45,13 +47,32 @@ public class ProdutoServlet extends HttpServlet {
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String caminho = request.getServletPath();
+        
+        if(caminho.equals("/insertProduto")){
+                adicionarProduto(request, response);
+        }
+        
+    }
+    
+    protected void removerFornecedor(HttpServletRequest request, HttpServletResponse response) throws IOException, PropertyVetoException, SQLException {
+        String idFor = request.getParameter("id");
+
+        ProdutoDAO produtoDAO = new ProdutoDAO(ConnectionFactory.getInstance().recuperaConexao());
+
+        response.sendRedirect("mainFornecedor");
+    }
+    
+    
+    protected void adicionarProduto (HttpServletRequest request, HttpServletResponse response) throws IOException {
         String ope = request.getParameter("ope");
-         // Passo 1 - Recuperar os parametros
-        String nome = request.getParameter("nomeCliente");
-        String descricao = request.getParameter("descricao");
-        String tipo = request.getParameter("tipo");
-        double valorUnitario = Double.parseDouble(request.getParameter("valor_unitario"));
-        int estoque = Integer.parseInt(request.getParameter("estoque"));
+        // Passo 1 - Recuperar os parametros
+        String nome = request.getParameter("nomeProduto");
+        String descricao = request.getParameter("descProduto");
+        String tipo = request.getParameter("tipoProduto");
+        double valorUnitario = Double.parseDouble(request.getParameter("valorProduto"));
+        int estoque = Integer.parseInt(request.getParameter("estoqueProduto"));
         // Passo 2 - Inserir no BD
         Produto produto = new Produto();
         produto.setNome(nome);
@@ -61,16 +82,17 @@ public class ProdutoServlet extends HttpServlet {
         produto.setEstoque(estoque);
         try {
             // ope = 1 => Update
-        	ProdutoDAO produtoDAO = new ProdutoDAO(ConnectionFactory.getInstance().recuperaConexao());
+            ProdutoDAO produtoDAO = new ProdutoDAO(ConnectionFactory.getInstance().recuperaConexao());
             if ("1".equals(ope)) {
-               produtoDAO.atualizarProduto(produto);
+                produtoDAO.atualizarProduto(produto);
             } else {
-               produtoDAO.salvar(produto);
+                produtoDAO.salvar(produto);
             }
-            response.sendRedirect(request.getContextPath()+"/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath()+"/telaProduto");
         } catch(SQLException | ClassNotFoundException | PropertyVetoException ex) {
-           response.sendRedirect(request.getContextPath()+"/uteis/erro.jsp");
+            ex.printStackTrace();
         }
     }
+    
 	  
 }

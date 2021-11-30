@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import br.com.sorveteria.model.Produto;
 import br.com.sorveteria.util.GerenciadorConexao;
+import java.sql.Statement;
 
 /**
  * @see Produtos
@@ -31,7 +32,7 @@ public class ProdutoDAO {
         try {
             String sql = "INSERT INTO produto(nome, descricao, valor_unitario , estoque, tipo) VALUES (?, ?, ?, ?, ?)";
 
-            try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 pstm.setString(1, produto.getNome());
                 pstm.setString(2, produto.getDescricao());
                 pstm.setDouble(3, produto.getValorUnitario());

@@ -26,6 +26,7 @@ create table cliente(
     data_nasc varchar(10) not null,
     login varchar(255) not null,
     senha varchar(255) not null,
+    fun_novo varchar(1) not null,
     
     primary key (id_fun)
   );
@@ -65,10 +66,8 @@ create table produto(
     estoque int not null,
     descricao varchar(500),
     tipo varchar(30) not null,
-    fk_id_for int not null,
 
     primary key (id_produto),
-    foreign key (fk_id_for) references fornecedor(id_for)
 );
 
 create table item_venda(

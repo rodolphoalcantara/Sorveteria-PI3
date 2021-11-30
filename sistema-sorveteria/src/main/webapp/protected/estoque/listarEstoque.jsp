@@ -1,3 +1,8 @@
+<%-- 
+    Document   : listarProdutos.jsp
+    Created on : 2 de nov de 2021, 18:01:49
+    Author     : rodolpho
+--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,44 +11,40 @@
         <c:import url="../../uteis/header.jsp" />
         <link href="${pageContext.request.contextPath}/css/estoque.css"
               rel="stylesheet" type="text/css"/>
+        <script src="../../js/estoque.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Produto</title>
+        <title>Estoque</title>
     </head>
     <body id="flex-outer">
-        <c:import url="../../uteis/navbar.jsp" />
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp" />
         <main class="d-flex flex-grow-1">
             <aside class="menu-lateral">
                 Menu
             </aside>
             <section class="content-section-estoque">
-                <section class="busca-section-estoque align-items-center">
-					
-					<div>
-						<button onclick="" class="btn btnPink mr-3">Adicionar</button>
-					</div>
-					
-                    <div id="divBusca">
-                        <input type="text" id="txtBusca" placeholder="Buscar..."/>
-                        <img src="../../assets/Lupa.svg" id="btnBusca" alt="Buscar"/>
-                    </div>
+                <section class="busca-section-estoque">
+                      
+                    <form id="divBusca" action="">
+                        <img src="${pageContext.request.contextPath}/assets/Lupa.svg" />
+                        <input type="text" id="txtBusca" placeholder="Produto..." />
+                        <input type="submit" onsubmit="buscarProduto()" id="btnBusca" value="Buscar" />
+                    </form>
 
                 </section>
                 <section class="table-section-estoque">
                    
                     <table  class="table">
                         <thead>
-                        <th scope="col" class="col-1">Cód. Produto</th><th scope="col" class="col-4">Nome Produto</th><th scope="col" class="col-4">Descrição</th><th scope="col" class="col-2">Tipo</th><th scope="col" class="col-1">Preço</th>
+                        <th scope="col" class="col-1">Cód. Produto</th><th scope="col" class="col-2">Nome Produto</th><th scope="col" class="col-1">Quantidade</th>
                         </thead>
                         <tbody>
                             <c:forEach var="produto" items="${listaProdutos}">
                                 <tr>
                                     <th scope="row">${produto.id}</th>
                                     <td>${produto.nome}</td>
-                                    <td>${produto.descricao}</td>
-                                    <td>${produto.tipo}</td>
-                                    <td>${produto.valorUnitario}</td>
-                                    <td class="col-1"><button onclick="" class="btn btnPink">Editar</button></td>
-                                    <td class="col-1"><button onclick="" class="btn btnPink">Remover</button></td>
+                                    <td>${produto.estoque}</td>
+                                    <td class="col-1"><button onclick="" class="btn bg-pink">Adicionar</button></td>
+                                    <td class="col-1"><button onclick="" class="btn bg-pink">Retirar</button></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

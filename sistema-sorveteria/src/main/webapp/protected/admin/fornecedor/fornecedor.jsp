@@ -50,7 +50,10 @@
                         <td><%=lista.get(i).getEstado()%></td>
                         <td><%=lista.get(i).getSegmento()%></td>
                         <td class="col-1"><a href="editarF?idFor=<%=lista.get(i).getIdFor()%>">Editar</a></td>
+                        
+                        <!--   Não é possível excluir fornecedor por conta da relação com a tabela Produtos.
                         <td class="col-1"><a href="javascript: confirmar(<%=lista.get(i).getIdFor()%>)">Excluir</a>
+                        -->
                         </td>
                     </tr>
                 <%}%>
