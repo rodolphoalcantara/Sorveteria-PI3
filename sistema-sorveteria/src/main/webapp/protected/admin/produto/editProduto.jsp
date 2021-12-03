@@ -14,7 +14,7 @@
         <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp"/>
         <h1 class="welcome-header">Formulário de Produtos</h1>
         <section class="container">
-        <form action="/adicionaProduto" method="POST">
+        <form action="/updateProduto" method="POST">
             <div class="form-group">
                 <input type="hidden" name="id_produto" value="${produto.id}"
                        required class="form-control"/><br/>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label>Valor</label>
-                <input type="text" name="valorProduto" value="${produto.valor_unitario}"
+                <input type="text" name="valorProduto" value="${produto.valorUnitario}"
                        required class="form-control"/><br/>
             </div>
             <div class="form-group">

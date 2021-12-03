@@ -9,31 +9,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url="uteis/header.jsp" />
+        <c:import url="${pageContext.request.contextPath}/uteis/header.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Relatorio de vendas</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-brown navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand navbar-brand-custom" href="index.jsp">
-                    <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
-                    Sorveteria
-                </a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div class=""><a class="nav-link active" href="#">Logout</a></div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid">
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp" />
+        <div class="container-fluid mt-5">
             <div class="panel panel-default">
                 <div class="row">
                     <div class="col-md-12">
@@ -55,7 +37,7 @@
                                     </div>
 
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-default">Buscar</button>
+                                        <button type="submit" class="btn btnPink">Buscar</button>
                                     </div>
                                 </div>  
                             </form>
@@ -71,8 +53,8 @@
                                         <input type="text" class="form-control" placeholder="Buscar por CPF..." id="txtSearch" name="codProduto"/>
                                         <input type="hidden" class="form-control" name="acao" value="filtrar"/>
                                         <div class="input-group-btn">
-                                            <button class="btn btn-defaul" type="submit">
-                                                <span class="glyphicon glyphicon-search"></span>
+                                            <button class="btn btnPink" type="submit">
+                                                <span class="glyphicon glyphicon-search"><img src="${pageContext.request.contextPath}/assets/Lupa.svg" width="20" height="20" alt="alt"/></span>
                                             </button>
                                         </div>
                                     </div>
@@ -81,11 +63,11 @@
                         </div>
                     </div>
                 </div>
-                <a href="relatorioEstoque" class="btn btn-lg btn-block bg-brown text-white">Relatório Estoque</a>
+                <a href="relatorioEstoque" class="btn btn-lg btn-block bg-brown text-white mt-5 mb-5">Relatório Estoque</a>
 
             </div>
 
-            <table class="table table-striped" >
+            <table class="table table-striped mt-5" >
                 <thead>
                     <tr>
                         <th scope="col">N.Venda</th>
@@ -96,7 +78,7 @@
                     </tr>
                 </thead>
                  <tbody>
-                    <c:forEach var="venda" items="${requestScope.vendas}">
+                    <c:forEach var="venda" items="${vendas}">
                         <tr>
                             <th scope="row">${venda.id}</th>
                             <td>${venda.dataVenda}</td>

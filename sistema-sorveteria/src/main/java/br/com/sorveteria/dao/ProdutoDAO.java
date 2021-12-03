@@ -1,5 +1,6 @@
 package br.com.sorveteria.dao;
 
+import br.com.sorveteria.factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,12 +140,57 @@ public class ProdutoDAO {
              ps.setString(3, produto.getTipo());
              ps.setDouble(4, produto.getValorUnitario());
              ps.setInt(5, produto.getEstoque());
+             ps.setInt(6, produto.getId());
              ps.executeUpdate();
          } catch (SQLException ex) {
              Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
              ok = false;
          }
          return ok;
+    }
+
+    public Produto buscarPorId(int id) {
+        Produto produto = null;
+        String query = "SELECT * FROM produto WHERE id_produto=?";
+        
+        try(PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+            	produto = new Produto();
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                double valorUnitario = rs.getDouble("valor_unitario");
+                int estoque = rs.getInt("estoque");
+                produto.setId(rs.getInt("id_produto"));
+                produto.setNome(nome);
+                produto.setDescricao(descricao);
+                produto.setTipo(tipo);
+                produto.setValorUnitario(valorUnitario);
+                produto.setEstoque(estoque);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+    }
+    
+    public static Double getValorProd(int id) {
+        Double valor = 0.0;
+        String query = "SELECT valor_unitario FROM produto WHERE id_produto=?";
+        try {
+            try ( PreparedStatement ps = ConnectionFactory.getInstance().recuperaConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    valor = rs.getDouble("valor_unitario");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return valor;
     }
     
 }

@@ -12,42 +12,72 @@
     </head>
     <body>
         <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp"/>
-        <h1 class="welcome-header">Formulário de Produtos</h1>
+        <h1 class="welcome-header">Cadastro de Clientes</h1>
         <section class="container">
-        <form action="/adicionaProduto" method="POST">
+        <form class="" action="/insertCliente" method="POST">
             <div class="form-group">
-                <input type="hidden" name="id_produto" value="${produto.id}"
+                <input type="hidden" name="id_cli" value="${cliente.id}"
                        required class="form-control"/><br/>
             </div>
             <div  class="form-group">
-                <label>Nome</label>
-                <input type="text" name="nomeProduto" value="${produto.nome}"
+                <label>CPF</label>
+                <input type="text" name="CPF" value="${cliente.CPF}"
                        required class="form-control"/><br/> 
             </div>
             <div class="form-group">
-                <label>Descrição</label>
-                <input type="text" name="descProduto" value="${produto.descricao}"
+                <label>Nome</label>
+                <input type="text" name="nome" value="${cliente.nome}"
                        required class="form-control"/><br/>
             </div>
             <div class="form-group">
-                <label>Tipo</label>
-                <input type="text" name="tipoProduto" value="${produto.tipo}"
+                <label>Email</label>
+                <input type="text" name="email" value="${cliente.email}"
                        required class="form-control"/><br/>
             </div>
             <div class="form-group">
-                <label>Valor</label>
-                <input type="text" name="valorProduto" value="${produto.valor_unitario}"
+                <legend class="col-form-label col-sm-2 pt-0 pl-0">Sexo</legend>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label mr-2" for="masculino">Masculino </label>
+                    <input class="form-check-input" type="radio" id="masculino" name="sexo" value="masculino"
+                           required class="form-control"/>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label mr-2" for="masculino">Feminino </label>
+                    <input class="form-check-input" type="radio" id="feminino" name="sexo" value="feminino"
+                           required class="form-control"/>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="form-group">
+                <label>Data de Nascimento</label>
+                <input type="date" name="dataNasc" value="${cliente.data_nasc}"
                        required class="form-control"/><br/>
             </div>
             <div class="form-group">
-                <label>Estoque</label>
-                <input type="text" name="estoqueProduto" value="${produto.estoque}"
+                <label>Telefone</label>
+                <input type="text" name="telefone" value="${cliente.telefone}"
+                       required class="form-control"/><br/>
+            </div>
+            <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" name="endereco" value="${cliente.endereco}"
+                       required class="form-control"/><br/>
+            </div>
+            <div class="form-group">
+                <label>Cidade</label>
+                <input type="text" name="cidade" value="${cliente.cidade}"
+                       required class="form-control"/><br/>
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <input type="text" name="estado" value="${cliente.estado}"
                        required class="form-control"/><br/>
             </div>
             <br/>
             <br/>
             <button type="submit" class="btn bg-pink btnOutlineBrown ml-0 w-100">Enviar</button>
         </form>
-        </section>>
+        </section>
     </body>
 </html>

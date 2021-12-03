@@ -20,8 +20,8 @@
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <c:if test="${fn:contains(pageContext.request.requestURI, '/protected/')}" >
-                    <div class="container"><a class="nav-link active" href="${pageContext.request.contextPath}/LoginServlet">Logout</a></div>
+                    <c:if test="${fn:contains(pageContext.request.requestURI,'/protected/')}" >
+                        <div class="container"><a class="nav-link active" href="${pageContext.request.contextPath}/LoginServlet">Logout</a></div>
                     </c:if>
                 </li>
             </ul>

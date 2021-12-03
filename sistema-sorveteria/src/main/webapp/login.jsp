@@ -26,8 +26,8 @@
                     </div>
                 </c:if>
                 <form id="formLogin" action="LoginServlet" method="POST">
-                    <input class="form-control" type="text" id="loginUsuario" name="loginUsuario" placeholder="Login">
-                    <input class="form-control" type="password" id="senhaUsuario" name="senhaUsuario" placeholder="Senha">
+                    <input class="form-control" type="text" id="loginUsuario" placeholder="Login">
+                    <input class="form-control" type="password" id="senhaUsuario" placeholder="Senha">
                     <button class="btnPink btnOutlineBrown" type="" onclick="enviarRequisicao()" >Log In</button>
                 </form>
             </section>

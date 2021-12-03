@@ -94,3 +94,9 @@ create table log_estoque(
     foreign key (fk_id_fun) references funcionario(id_fun),
     foreign key (fk_id_produto) references produto(id_produto)
 );
+
+
+insert into funcionario(CPF, nome, sexo, data_nasc, login, senha, fun_novo) values (
+	('00000000000', 'Administrador', 'masculino', '2021-01-01', 'admin', '$2a$08$IhC.vrzOTi/E1x9ADTMTeeuAkqLLDMKtPrsYg0tvl7d5bQEqyPENS', 'N'),
+	('11111111111', 'Naga Freitas', 'masculino', '2021-01-01', 'nagafreitas', '$2a$08$gHq3G.zAADui9iuPqF/d0ORmsxzEpbQcP3C0LXhUPsBOxb6ufGXqa', 'N')
+);

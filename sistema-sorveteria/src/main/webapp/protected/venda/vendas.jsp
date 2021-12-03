@@ -4,18 +4,19 @@
     Author     : Paola
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/vendaEstilo.css">
-
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/vendaEstilo.css">
+        <!--< url="${pageContext.request.contextPath}/uteis/header.jsp" /> c:import -->
         <title>Sorveteria</title>
     </head>
     <body>
-        <h1>Venda</h1>
-
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp" />
+        <h1 class="welcome-header">Venda</h1>
         <div>
             <label for="">ID Produto: </label>
             <input type="text" name="produtoId" value="${prodIdAtr}">
