@@ -25,19 +25,31 @@ public class Funcionario {
     private Date dataNascimento;
     private String login;
     private String senha;
+    private Boolean isAdmin;
     
-    public Funcionario(String CPF, String nome, String sexo, Date dataNascimento, String login, String senha) {
+    public Funcionario(String CPF, String nome, String sexo, Date dataNascimento, String login, String senha, Boolean isAdmin) {
         this.CPF = CPF;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.login = login;
         this.senha = senha;
+        this.isAdmin = isAdmin;
     }
 
     public Funcionario(int id, String CPF, String nome) {
         this.id = id;
         this.CPF = CPF;
         this.nome = nome;
+    }
+
+    public Funcionario(int id, String CPF, String nome, String sexo, Date dataNascimento, String login, Boolean isAdmin) {
+        this.id = id;
+        this.CPF = CPF;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+        this.login = login;
+        this.isAdmin = isAdmin;
     }
     
     

@@ -59,13 +59,10 @@
     padding: 0 10px;
     min-height: 300px;
     background-color: rgba(218, 183, 152, .25);
+    font-size:14px;
 }
 
 .table tr td button {
     margin: 0;
 
-}
-
-.btnPink {
-    background-color: #f9e3e7;
 }

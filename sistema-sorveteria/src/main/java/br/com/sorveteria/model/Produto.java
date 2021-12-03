@@ -20,8 +20,6 @@ public class Produto {
 	double valorUnitario;
 	int estoque;
 	
-	// Fornecedor fornecedor; implementar assim que for criada a classe
-
 	public Produto(String nome, String descricao, double preco, int estoque, String tipo) {
 		this.nome = nome;
 		this.descricao = descricao;
@@ -29,12 +27,4 @@ public class Produto {
 		this.estoque = estoque;
 		this.tipo = tipo;
 	}
-
-    public int getQuantidade() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setValor(double valorUnitario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import br.com.sorveteria.model.Cliente;
 import br.com.sorveteria.util.GerenciadorConexao;
+import java.sql.Statement;
 
 public class ClienteDAO {
 	
@@ -25,7 +26,7 @@ public class ClienteDAO {
         try {
             String sql = "INSERT INTO cliente(CPF, nome, email, sexo, data_nasc, telefone, endereco, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 pstm.setString(1, cliente.getCPF());
                 pstm.setString(2, cliente.getNome());
                 pstm.setString(3, cliente.getEmail());
@@ -51,9 +52,10 @@ public class ClienteDAO {
 
     }
 	
-	public Cliente buscarPorNome(String nome) {
+	   public List<Cliente> buscarPorNome(String nome) {
         try {
-            Cliente cliente = null;
+            
+            List<Cliente> clientes = new ArrayList<>();
 
             String sql = "SELECT * FROM cliente c WHERE c.nome like ?";
 
@@ -64,16 +66,49 @@ public class ClienteDAO {
 
                 try ( ResultSet rst = pstm.getGeneratedKeys()) {
                     while (rst.next()) {
+                        Cliente cliente = new Cliente(
+                                rst.getString("CPF"),
+                                rst.getString("nome"),
+                                rst.getString("email"),
+                                rst.getString("sexo"),
+                                rst.getString("data_nasc"),
+                                rst.getString("telefone"),
+                                rst.getString("endereco"),
+                                rst.getString("cidade"),
+                                rst.getString("estado"));
+                        clientes.add(cliente);
+                    }
+                    return clientes;
+                }
+
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+           
+           public Cliente buscarPorId(int id) {
+        try {
+            Cliente cliente = null;
+
+            String sql = "SELECT * FROM cliente c WHERE c.id_cli like ?";
+
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                pstm.setInt(1, id);
+
+                try ( ResultSet rst = pstm.executeQuery()) {
+                    while (rst.next()) {
                         cliente = new Cliente(
-                        		rst.getString("CPF"),
-                        		rst.getString("nome"),
-                        		rst.getString("email"),
-                        		rst.getString("sexo"),
-                        		rst.getString("data_nasc"),
-                        		rst.getString("telefone"),
-                        		rst.getString("endereco"),
-                        		rst.getString("cidade"),
-                        		rst.getString("estado"));
+                                rst.getInt("id_cli"),
+                                rst.getString("CPF"),
+                                rst.getString("nome"),
+                                rst.getString("email"),
+                                rst.getString("sexo"),
+                                rst.getString("data_nasc"),
+                                rst.getString("telefone"),
+                                rst.getString("endereco"),
+                                rst.getString("cidade"),
+                                rst.getString("estado"));
                     }
                     return cliente;
                 }
@@ -89,32 +124,34 @@ public class ClienteDAO {
         String query = "SELECT * FROM cliente";
         
         Connection con = GerenciadorConexao.getConnection();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rst = ps.executeQuery();
-            while (rst.next()) {
-            	Cliente cliente = new Cliente();
-            	String CPF = rst.getString("CPF");
-        		String nome = rst.getString("nome");
-        		String email =  rst.getString("email");
-        		String sexo = rst.getString("sexo");
-        		String data_nasc = rst.getString("data_nasc");
-        		String telefone = rst.getString("telefone");
-        		String endereco = rst.getString("endereco");
-        		String cidade = rst.getString("cidade");
-        		String estado = rst.getString("estado");
-                cliente.setCPF(CPF);
-                cliente.setNome(nome);
-                cliente.setEmail(email);
-                cliente.setSexo(sexo);
-                cliente.setData_nasc(data_nasc);
-                cliente.setTelefone(telefone);
-                cliente.setEndereco(endereco);
-                cliente.setCidade(cidade);
-                cliente.setEstado(estado);
-                clientes.add(cliente);
-            }
-        } catch (SQLException ex) {
+            try {
+                PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                ResultSet rst = ps.executeQuery();
+                while (rst.next()) {
+                    Cliente cliente = new Cliente();
+                    int id = rst.getInt("id_cli");
+                    String CPF = rst.getString("CPF");
+                    String nome = rst.getString("nome");
+                    String email = rst.getString("email");
+                    String sexo = rst.getString("sexo");
+                    String data_nasc = rst.getString("data_nasc");
+                    String telefone = rst.getString("telefone");
+                    String endereco = rst.getString("endereco");
+                    String cidade = rst.getString("cidade");
+                    String estado = rst.getString("estado");
+                    cliente.setId(id);
+                    cliente.setCPF(CPF);
+                    cliente.setNome(nome);
+                    cliente.setEmail(email);
+                    cliente.setSexo(sexo);
+                    cliente.setData_nasc(data_nasc);
+                    cliente.setTelefone(telefone);
+                    cliente.setEndereco(endereco);
+                    cliente.setCidade(cidade);
+                    cliente.setEstado(estado);
+                    clientes.add(cliente);
+                }
+            } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clientes;
@@ -122,14 +159,15 @@ public class ClienteDAO {
     }
     		
 	
-	public boolean deletarCliente(int nome) throws ClassNotFoundException, SQLException {
+	public boolean deletarCliente(int id) throws ClassNotFoundException, SQLException {
         boolean ok = true;
-        String query = "DELETE FROM cliente where nome=?";
+        String query = "DELETE FROM cliente where id_cli=?";
         Connection con = GerenciadorConexao.getConnection();
          try {
              PreparedStatement ps = con.prepareStatement(query);
-             ps.setInt(1, nome);
-             ps.executeUpdate();
+             ps.setInt(1, id);
+             int rowsAffected = ps.executeUpdate();
+             if(rowsAffected == 0 ) ok=false;
          } catch (SQLException ex) {
              Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
              ok = false;
@@ -152,12 +190,44 @@ public class ClienteDAO {
              pstm.setString(7, cliente.getEndereco());
              pstm.setString(8, cliente.getCidade());
              pstm.setString(9, cliente.getEstado());
+             pstm.setInt(10, cliente.getId());
              pstm.executeUpdate();
          } catch (SQLException ex) {
              Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
              ok = false;
          }
          return ok;
+    }
+
+    public Cliente buscarPorCPF(String cpf) {
+        try {
+            Cliente cliente = null;
+
+            String sql = "SELECT * FROM cliente c WHERE c.CPF like ?";
+
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                pstm.setString(1, cpf);
+
+                try ( ResultSet rst = pstm.executeQuery()) {
+                    while (rst.next()) {
+                        cliente = new Cliente(
+                                rst.getInt("id_cli"),
+                                rst.getString("CPF"),
+                                rst.getString("nome"),
+                                rst.getString("email"),
+                                rst.getString("sexo"),
+                                rst.getString("data_nasc"),
+                                rst.getString("telefone"),
+                                rst.getString("endereco"),
+                                rst.getString("cidade"),
+                                rst.getString("estado"));
+                    }
+                    return cliente;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 	
 }

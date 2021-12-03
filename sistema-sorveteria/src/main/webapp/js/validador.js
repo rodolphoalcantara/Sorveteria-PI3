@@ -1,4 +1,5 @@
-function validar(){
+function validarFornecedor()
+{
     let cnpj = formFornecedor.cnpj.value;
     let nome = formFornecedor.nome.value;
     let email = formFornecedor.email.value;
@@ -8,8 +9,8 @@ function validar(){
     let cidade = formFornecedor.cidade.value;
     let segmento = formFornecedor.segmento.value;
 
-    if(cnpj === ""){
-        alert('Preencha o campo CNPJ')
+    if(cnpj === "" || cnpj.length > 11){
+        alert('Preencha o campo com um CNPJ válido.')
         formFornecedor.cnpj.focus();
         return false;
     }else if(nome === ""){
@@ -28,7 +29,7 @@ function validar(){
         return false;
     }
     else if(endereco === ""){
-        alert('Preencha o campo Telefone')
+        alert('Preencha o campo Endereço')
         formFornecedor.endereco.focus();
         return false;
     }
@@ -52,4 +53,11 @@ function validar(){
         document.forms["formFornecedor"].submit()
     }
 
+}
+
+function validaTamanho(tamanhoMaximo, str){
+    if(str.length > tamanhoMaximo){
+        return str.substring(0, (tamanhoMaximo-3)) + "...";
+    }
+    return str;
 }

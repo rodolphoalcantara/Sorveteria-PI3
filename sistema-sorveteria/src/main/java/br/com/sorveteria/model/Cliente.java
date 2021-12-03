@@ -33,6 +33,13 @@ public class Cliente {
 		this.cidade = cidade;
 		this.estado = estado;
 	}
+
+    public Cliente(int id, String CPF, String nome, String email) {
+        this.id = id;
+        this.CPF = CPF;
+        this.nome = nome;
+        this.email = email;
+    }
 	
     
     

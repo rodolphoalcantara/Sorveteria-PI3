@@ -4,6 +4,8 @@
     Author     : rodolpho
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,17 +14,15 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-brown">
-<<<<<<< HEAD
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-=======
-            <a class="navbar-brand" href="index.jsp">
->>>>>>> master
                 <img src="${pageContext.request.contextPath}/assets/Logo.svg" width="65" height="65" class="d-inline-block align-center" alt="">
                 Sorveteria
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <div class="container"><a class="nav-link active" href="#">Logout</a></div>
+                    <c:if test="${fn:contains(pageContext.request.requestURI,'/protected/')}" >
+                        <div class="container"><a class="nav-link active" href="${pageContext.request.contextPath}/LoginServlet">Logout</a></div>
+                    </c:if>
                 </li>
             </ul>
         </nav>

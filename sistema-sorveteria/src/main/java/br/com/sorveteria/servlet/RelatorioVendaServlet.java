@@ -5,7 +5,8 @@
  */
 package br.com.sorveteria.servlet;
 
-//import br.com.sorveteria.dao.VendaDao;
+import br.com.sorveteria.dao.VendaDAO;
+import br.com.sorveteria.factory.ConnectionFactory;
 import br.com.sorveteria.model.Venda;
 import java.io.IOException;
 import java.util.List;
@@ -27,9 +28,13 @@ public class RelatorioVendaServlet extends HttpServlet{
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       //List<Venda> vendas = VendaDao.pegarTudo();
-       //req.setAttribute("vendas", vendas);
-       RequestDispatcher rd = req.getRequestDispatcher("/relatorioVenda.jsp");
+       try{
+       List<Venda> vendas = new VendaDAO().listarVendasComItens();
+       req.setAttribute("vendas", vendas);
+       }catch(Exception ex){
+           ex.printStackTrace();
+       }
+       RequestDispatcher rd = req.getRequestDispatcher("/protected/admin/relatorios/relatorioVenda.jsp");
        rd.forward(req, resp);
    }
 

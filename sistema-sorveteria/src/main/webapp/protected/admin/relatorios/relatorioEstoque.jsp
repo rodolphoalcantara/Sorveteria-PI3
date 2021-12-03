@@ -8,34 +8,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url="uteis/header.jsp" />
+        <c:import url="${pageContext.request.contextPath}/uteis/header.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="${pageContext.request.contextPath}/css/estoque.css" rel="stylesheet" type="text/css"/>
         <title>Relatorio estoque</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
-
     </head>
-    <body class="custom-body">    
-        <nav class="navbar navbar-dark bg-brown navbar-custom">
-            <div class="container-fluid">
-                <a class="navbar-brand navbar-brand-custom" href="index.jsp">
-                    <img src="assets/Logo.svg" width="80" height="80" class="d-inline-block align-center" alt="">
-                    Sorveteria
-                </a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div class=""><a class="nav-link active" href="#">Logout</a></div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="container-fluid">
-            <div class="form-busca form-busca-off form-group">
+    <body class="">    
+        <c:import url="${pageContext.request.contextPath}/uteis/navbar.jsp" />
+        <div class="container-fluid mt-5 ml-3">
+            <div class="form-busca form-busca-off form-group mr-5">
                 <form action="relatorioEstoque" method="GET"> 
                     <div class="row">
                         <label class="col-form-label col-sm-12 col-md-1">Cod.produto</label>
@@ -44,8 +26,8 @@
                                 <input type="text" class="form-control" placeholder="Buscar código produto..." id="txtSearch" name="codProduto"/>
                                 <input type="hidden" class="form-control" name="acao" value="filtrar"/>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-defaul" type="submit">
-                                        <span class="glyphicon glyphicon-search"></span>
+                                    <button class="btn btnPink" type="submit">
+                                        <span class="glyphicon glyphicon-search"><img src="${pageContext.request.contextPath}/assets/Lupa.svg" width="20" height="20" alt="alt"/></span>
                                     </button>
                                 </div>
                             </div>
@@ -54,8 +36,8 @@
                 </form>
             </div>
 
-            <div id="dvData">
-                <table class="table table-striped" style="background-color: white;" >
+            <div id="table-section-estoque">
+                <table class="table-section-estoque mr-5">
                     <thead>
                         <tr>
                             <th scope="col">Cod.Produto</th>

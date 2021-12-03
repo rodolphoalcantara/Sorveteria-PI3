@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Classe de acesso ao banco de dados que transforma variaveis ou objetos Funcionario em registros.
@@ -27,20 +28,19 @@ public class FuncionarioDAO {
     public void salvar(Funcionario funcionario) {
 
         try {
-            String sql = "INSERT INTO funcionario(CPF, nome, sexo, data_nasc, login, senha, fun_novo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO funcionario(CPF, nome, sexo, data_nasc, login, senha, isAdmin) SELECT ?, ?, ?, ?, ?, ?, ? WHERE NOT (SELECT * FROM funcionario WHERE login=?)";
 
-            try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 pstm.setString(1, funcionario.getCPF());
                 pstm.setString(2, funcionario.getNome());
                 pstm.setString(3, funcionario.getSexo());
                 pstm.setDate(4, new Date(funcionario.getDataNascimento().getTime()));
                 pstm.setString(5, funcionario.getLogin());
                 pstm.setString(6, funcionario.getSenha());
-                pstm.setString(7, "S");
+                pstm.setString(7, funcionario.getIsAdmin() ? "S" : "N");
+                pstm.setString(8, funcionario.getLogin());
 
-                pstm.execute();
-
-                try ( ResultSet rst = pstm.getGeneratedKeys()) {
+                try ( ResultSet rst = pstm.executeQuery()) {
                     while (rst.next()) {
                         funcionario.setId(rst.getInt(1));
                     }
@@ -73,13 +73,50 @@ public class FuncionarioDAO {
                                 rst.getString("sexo"),
                                 rst.getDate("data_nasc"),
                                 rst.getString("login"),
-                                rst.getString("senha"));
+                                rst.getString("senha"),
+                                (rst.getString("isAdmin") == "S" ? true : false)
+                        );
                     }
                     return funcionario;
                 }
 
             }
         } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    public Funcionario getFuncionario(String login){
+        try {
+            Funcionario funcionario = null;
+
+            String sql = "SELECT * FROM funcionario WHERE login=?";
+
+            try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                pstm.setString(1, login);
+
+                try ( ResultSet rst = pstm.executeQuery()) {
+                    if (rst.next()) {
+                        String isAdmin = rst.getString("isAdmin");
+                        String senhaHash = rst.getString("senha");
+                        
+                        funcionario = new Funcionario(
+                                rst.getInt("id_fun"),
+                                rst.getString("CPF"),
+                                rst.getString("nome"),
+                                rst.getString("sexo"),
+                                rst.getDate("data_nasc"),
+                                rst.getString("login"),
+                                senhaHash,
+                                isAdmin.contains("S") ? true : false
+                        );
+                    }
+                    return funcionario;
+                }
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             throw new RuntimeException(ex);
         }
     }

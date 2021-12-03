@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,7 +41,7 @@ public class EstoqueDAO {
                     + "INNER JOIN produto P on P.id_produto like L.fk_id_produto "
                     + "order by L.data_op desc";
             
-            try(PreparedStatement pstm = connection.prepareStatement(query)){
+            try(PreparedStatement pstm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
                 pstm.execute();
                 try(ResultSet rs = pstm.getResultSet()){
                     while(rs.next()){
@@ -77,7 +78,7 @@ public class EstoqueDAO {
                     + "WHERE L.operacao like ?"
                     + "order by L.data_op desc";
             
-            try(PreparedStatement pstm = connection.prepareStatement(query)){
+            try(PreparedStatement pstm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
                 pstm.setString(1, operacao);
                 pstm.execute();
                 
@@ -115,7 +116,7 @@ public class EstoqueDAO {
             int estoqueAtual = produto.getEstoque() - quantidadeMovimentada;
             String query = "UPDATE produto SET estoque=? WHERE id_produto like ?";
 
-            try ( PreparedStatement pstm = connection.prepareStatement(query)) {
+            try ( PreparedStatement pstm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
                 pstm.setInt(1, estoqueAtual);
                 pstm.setInt(2, produto.getId());
                 int linhasAfetadas = pstm.executeUpdate();
@@ -150,7 +151,7 @@ public class EstoqueDAO {
                     + "INNER JOIN produto P on P.id_produto like L.fk_id_produto "
                 + "WHERE L.id_log = ?";
         
-        try ( PreparedStatement pstm = connection.prepareStatement(sql)) {
+        try ( PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             pstm.setString(1, codigo);
             pstm.execute();
